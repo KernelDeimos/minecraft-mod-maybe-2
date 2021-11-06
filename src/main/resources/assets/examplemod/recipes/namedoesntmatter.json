@@ -1,0 +1,25 @@
+{
+    "result": {
+      "item": "examplemod:fasphalt_block",
+      "count": 16
+    },
+    "pattern": [
+      "aaa",
+      "ara",
+      "aaa"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+      
+      "r": [{
+        "item": "minecraft:coal",
+        "data": 0
+      }, {
+        "item": "minecraft:coal",
+        "data": 1
+      }],
+      "a": {
+        "item": "minecraft:gravel"
+      }
+    }
+  }

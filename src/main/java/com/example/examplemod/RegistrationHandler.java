@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.examplemod.blocks.FasphaltBlock;
 import com.example.examplemod.init.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -33,8 +34,8 @@ public class RegistrationHandler {
     @SubscribeEvent
     public static void registerBlocks(Register<Block> event) {
         final Block[] blocks = {
-            setBlockName("first_block"),
-            setBlockName("fasphalt_block")
+            setBlockName("first_block", new Block(Material.ROCK)),
+            setBlockName("fasphalt_block", new FasphaltBlock())
         };
 
         event.getRegistry().registerAll(blocks);
@@ -47,8 +48,8 @@ public class RegistrationHandler {
             .setCreativeTab(CreativeTabs.MISC);
     }
 
-    public static Block setBlockName (String name) {
-        return new Block(Material.ROCK)
+    public static Block setBlockName (String name, Block block) {
+        return block
             .setRegistryName(ExampleMod.MODID, name)
             .setTranslationKey(ExampleMod.MODID + "." + name)
             .setCreativeTab(CreativeTabs.MISC);
