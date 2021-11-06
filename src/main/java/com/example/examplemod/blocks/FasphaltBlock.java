@@ -8,6 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
@@ -18,17 +19,19 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.logging.log4j.Logger;
+
 
 @EventBusSubscriber(value = Side.CLIENT, modid = ExampleMod.MODID)
 public class FasphaltBlock extends Block {
 
+    
     
 	public FasphaltBlock() {
 		super(Material.ROCK);
 		this.setHardness(3F);
 		this.setResistance(20F);
 		this.setSoundType(SoundType.STONE);
+        this.setDefaultSlipperiness(0.5f);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -36,9 +39,11 @@ public class FasphaltBlock extends Block {
 
 	@Override
 	public void onEntityWalk(World world, BlockPos pos, Entity entity) {
-		double amount = (entity.isInWater() || entity.isInLava())
-			? 1.2 : 1.4;
-		entity.motionX *= amount;
-		entity.motionY *= amount;
+		if (entity instanceof  EntityPlayer){
+            double amount = (entity.isInWater() || entity.isInLava())
+                ? 1.2 : 1.4;
+            entity.motionX *= amount;
+            entity.motionY *= amount;
+        }
 	}
 }
