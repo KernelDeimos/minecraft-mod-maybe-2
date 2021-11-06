@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import com.example.examplemod.blocks.FasphaltBlock;
+import com.example.examplemod.blocks.HydraBlock;
 import com.example.examplemod.init.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -34,7 +35,7 @@ public class RegistrationHandler {
     @SubscribeEvent
     public static void registerBlocks(Register<Block> event) {
         final Block[] blocks = {
-            setBlockName("first_block", new Block(Material.ROCK)),
+            setBlockName("first_block", new HydraBlock()),
             setBlockName("fasphalt_block", new FasphaltBlock())
         };
 
