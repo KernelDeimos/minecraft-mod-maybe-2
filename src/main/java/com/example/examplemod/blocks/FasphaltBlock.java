@@ -2,6 +2,7 @@ package com.example.examplemod.blocks;
 
 import com.example.examplemod.ExampleMod;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -25,7 +26,9 @@ public class FasphaltBlock extends Block {
     
 	public FasphaltBlock() {
 		super(Material.ROCK);
-		
+		this.setHardness(3F);
+		this.setResistance(20F);
+		this.setSoundType(SoundType.STONE);
 	}
 
 	@SideOnly(Side.CLIENT)
