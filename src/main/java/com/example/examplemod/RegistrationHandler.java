@@ -21,8 +21,9 @@ public class RegistrationHandler {
 
         final Item[] itemBlocks = {
             new ItemBlock(ModBlocks.FIRST_BLOCK)
-                .setRegistryName(ModBlocks.FIRST_BLOCK.getRegistryName())
-                // .setRegistryName(ExampleMod.MODID, "first_block")
+                .setRegistryName(ModBlocks.FIRST_BLOCK.getRegistryName()),
+            new ItemBlock(ModBlocks.FASPHALT_BLOCK)
+                .setRegistryName(ModBlocks.FASPHALT_BLOCK.getRegistryName())
         };
 
         event.getRegistry().registerAll(items);
@@ -32,7 +33,8 @@ public class RegistrationHandler {
     @SubscribeEvent
     public static void registerBlocks(Register<Block> event) {
         final Block[] blocks = {
-            setBlockName("first_block")
+            setBlockName("first_block"),
+            setBlockName("fasphalt_block")
         };
 
         event.getRegistry().registerAll(blocks);
