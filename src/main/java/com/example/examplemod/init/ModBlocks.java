@@ -9,4 +9,5 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 public class ModBlocks {
     public static final Block FIRST_BLOCK = null;
     public static final Block FASPHALT_BLOCK = null;
+    public static final Block MOBSAND_BLOCK = null;
 }
