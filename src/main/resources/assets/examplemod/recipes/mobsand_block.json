@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "examplemod:mobsand_block",
+        "count": 8
+    },
+    "pattern": [
+        "aaa",
+        "ara",
+        "aaa"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "a": {
+            "item": "minecraft:soul_sand"
+        },
+        "r": {
+            "item": "minecraft:rotten_flesh"
+        }
+    }
+  }
+
