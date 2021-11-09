@@ -39,6 +39,7 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 		this.setHardness(3F);
 		this.setResistance(20F);
 		this.setSoundType(SoundType.STONE);
+		//If you move faster, it takes longer to top. Friction should be adjust to prevent "ice like" sliding.
 		if ( amountPlayer >= 1 && amountMob >= 1 ) {
 			this.setDefaultSlipperiness(0.5f);
 		}
@@ -51,6 +52,12 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 	@SideOnly(Side.CLIENT)
 	private static MovementInput manualInputCheck;
 
+	/**
+     * When an entity walks on the block, there speed is updated depending on the block values.
+	 * If the block is under water, different values are applied. Different values are used depending
+	 * if the entity is a player or a MOB
+     * void
+     */
 	@Override
 	public void onEntityWalk(World world, BlockPos pos, Entity entity) {
 		double amount = (entity instanceof EntityPlayer)
@@ -104,6 +111,11 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 
 	}
 
+
+	 /**
+     * Get the integer meta value repersenting the facing direction for meta data. 0-3
+     * int
+     */
 	@Override
 	public int getMetaFromState(IBlockState state) {
 
@@ -111,6 +123,11 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
         i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
         return i;
 	}
+
+	/**
+     * Get the BlockState updated with EnumFacing based on meta value
+     * IBlockState
+     */
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
@@ -120,9 +137,26 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 		
 	}
 
+	/**
+     * A little confused on the need for this. From reading, BlockHorizonal already has a FACING property,
+	 * not sure why we need to add it manually. Should read the the BlockHorizontal source.
+     * BlockStateContainer
+     */	
+
 	@Override
 	protected BlockStateContainer createBlockState() {
 
 		return new BlockStateContainer(this, new IProperty[] {FACING});
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (facing == EnumFacing.DOWN){
+			logger.info("That's my no no spot");
+		} else {
+			logger.info("Tee Hee, that tickles");
+		}
+		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
 }
