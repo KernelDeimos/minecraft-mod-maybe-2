@@ -1,0 +1,7 @@
+# Items
+item.examplemod.first_item.name=Hydra Fragment
+
+# Blocks
+tile.examplemod.first_block.name=Hydra Block
+tile.examplemod.fasphalt_block.name=Fasphalt
+tile.examplemod.mobsand_block.name=Mobsand
