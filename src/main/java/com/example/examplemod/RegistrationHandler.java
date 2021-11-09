@@ -3,6 +3,8 @@ package com.example.examplemod;
 import com.example.examplemod.blocks.FasphaltBlock;
 import com.example.examplemod.blocks.FasphaltBlockDirectional;
 import com.example.examplemod.blocks.HydraBlock;
+import com.example.examplemod.blocks.RickRollBlock;
+import com.example.examplemod.blocks.RickRollTE;
 import com.example.examplemod.init.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -13,6 +15,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @EventBusSubscriber(modid = ExampleMod.MODID)
 public class RegistrationHandler {
@@ -30,7 +33,9 @@ public class RegistrationHandler {
             new ItemBlock(ModBlocks.MOBSAND_BLOCK)
                 .setRegistryName(ModBlocks.MOBSAND_BLOCK.getRegistryName()),
             new ItemBlock(ModBlocks.FASPHALT_BLOCK_DIRECTIONAL)
-                .setRegistryName(ModBlocks.FASPHALT_BLOCK_DIRECTIONAL.getRegistryName())    
+                .setRegistryName(ModBlocks.FASPHALT_BLOCK_DIRECTIONAL.getRegistryName()),
+            new ItemBlock(ModBlocks.RICKROLL_BLOCK)
+                .setRegistryName(ModBlocks.RICKROLL_BLOCK.getRegistryName()),
         };
 
         event.getRegistry().registerAll(items);
@@ -43,23 +48,26 @@ public class RegistrationHandler {
             setBlockName("first_block", new HydraBlock()),
             setBlockName("fasphalt_block", new FasphaltBlock(1.4, 1)),
             setBlockName("mobsand_block", new FasphaltBlock(1, 0.03)),
-            setBlockName("fasphalt_block_directional", new FasphaltBlockDirectional(1.4, 1))
+            setBlockName("fasphalt_block_directional", new FasphaltBlockDirectional(1.4, 1)),
+            setBlockName("rickroll_block", new RickRollBlock()),
         };
 
         event.getRegistry().registerAll(blocks);
+
+        GameRegistry.registerTileEntity(RickRollTE.class, ExampleMod.MODID + ".rickroll_block");
     }
 
     public static Item setItemName(String name) {
         return new Item()
             .setRegistryName(ExampleMod.MODID, "first_item")
-            .setTranslationKey(ExampleMod.MODID + "." + "first_item")
+            .setUnlocalizedName(ExampleMod.MODID + "." + "first_item")
             .setCreativeTab(CreativeTabs.MISC);
     }
 
     public static Block setBlockName (String name, Block block) {
         return block
             .setRegistryName(ExampleMod.MODID, name)
-            .setTranslationKey(ExampleMod.MODID + "." + name)
+            .setUnlocalizedName(ExampleMod.MODID + "." + name)
             .setCreativeTab(CreativeTabs.MISC);
     }
 }

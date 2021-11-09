@@ -31,7 +31,7 @@ minecraft {
     //mappings channel: 'snapshot', version: '20171003-1.12'
     // mappings channel: 'snapshot', version: '20171003-1.12'
     // mappings channel: 'stable', version: '39-1.12'
-    mappings = "stable_39"
+    mappings = "snapshot_20171003"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')

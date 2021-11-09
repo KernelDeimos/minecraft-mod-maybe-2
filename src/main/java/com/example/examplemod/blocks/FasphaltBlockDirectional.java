@@ -77,7 +77,7 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		// TODO Auto-generated method stub
-		return getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
+		return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
 	}
 
 	@Override
