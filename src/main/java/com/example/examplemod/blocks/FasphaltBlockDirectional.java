@@ -159,4 +159,18 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 		}
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
+
+	@Override
+	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
+		logger.info("No mommy, don't do it again.\n\rDon't do it again \n\rI'll be a good boy \n\rI'll be a good boy, I promise\n\rNo mommy don't hit me\n\rWhy did you have to hit me like that, mommy?");
+		super.onBlockClicked(worldIn, pos, playerIn);
+	}
+
+	@Override
+	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+		logger.info("I left this life behind far too soon.");
+		super.onBlockDestroyedByPlayer(worldIn, pos, state);
+	}
+
+	
 }
