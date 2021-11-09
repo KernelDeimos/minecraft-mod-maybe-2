@@ -8,7 +8,6 @@ import com.example.examplemod.blocks.RickRollTE;
 import com.example.examplemod.init.ModBlocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;

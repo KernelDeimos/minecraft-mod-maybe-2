@@ -1,23 +1,29 @@
 package com.example.examplemod.blocks;
 
+
+
 import com.example.examplemod.ExampleMod;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.Mirror;
 import net.minecraft.util.MovementInput;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Logger;
 
 
 @EventBusSubscriber(value = Side.CLIENT, modid = ExampleMod.MODID)
@@ -25,6 +31,8 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 
 	private double amountPlayer;
 	private double amountMob;
+	private Logger logger = org.apache.logging.log4j.LogManager.getLogger();
+
 
 	public FasphaltBlockDirectional(double amountPlayer, double amountMob) {
 		super(Material.ROCK);
@@ -62,29 +70,59 @@ public class FasphaltBlockDirectional extends BlockHorizontal {
 		return 0.5 * (amount - 1) + 1;
 	}
 
+
+	/**
+     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
+     * blockstate.
+     */
+    public IBlockState withRotation(IBlockState state, Rotation rot)
+    {
+        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+    }
+
+    /**
+     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
+     * blockstate.
+     */
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
+    {
+        return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+    }
+
+    /**
+     * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
+     * IBlockstate
+     */
+
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand).withProperty(FACING, placer.getHorizontalFacing());
+				logger.info(placer.getHorizontalFacing().toString());
+				
+				return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
+				
+
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		// TODO Auto-generated method stub
-		return state.getValue(FACING).getHorizontalIndex();
+
+		int i = 0;
+        i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
+        return i;
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		// TODO Auto-generated method stub
-		return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+
+		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
 		
 		
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		// TODO Auto-generated method stub
-		return new BlockStateContainer(this, FACING);
+
+		return new BlockStateContainer(this, new IProperty[] {FACING});
 	}
 }
