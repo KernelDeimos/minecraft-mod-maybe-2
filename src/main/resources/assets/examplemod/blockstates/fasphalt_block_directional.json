@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "examplemod:fasphalt_block_directional"
+    },
+    "variants": {
+        "facing=north": {"model": "examplemod:fasphalt_block_directional"},
+        "facing=east":  {"model": "examplemod:fasphalt_block_directional"},
+        "facing=south": {"model": "examplemod:fasphalt_block_directional"},
+        "facing=west":  {"model": "examplemod:fasphalt_block_directional"}
+    }
+}
+
