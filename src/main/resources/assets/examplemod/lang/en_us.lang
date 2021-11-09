@@ -5,3 +5,4 @@ item.examplemod.first_item.name=Hydra Fragment
 tile.examplemod.first_block.name=Hydra Block
 tile.examplemod.fasphalt_block.name=Fasphalt
 tile.examplemod.mobsand_block.name=Mobsand
+tile.examplemod.fasphalt_block_directional.name=Fasphalt Single Stripe

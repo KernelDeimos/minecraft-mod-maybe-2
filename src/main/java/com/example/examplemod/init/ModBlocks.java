@@ -10,4 +10,5 @@ public class ModBlocks {
     public static final Block FIRST_BLOCK = null;
     public static final Block FASPHALT_BLOCK = null;
     public static final Block MOBSAND_BLOCK = null;
+    public static final Block FASPHALT_BLOCK_DIRECTIONAL = null;
 }

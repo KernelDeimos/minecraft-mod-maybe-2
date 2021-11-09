@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import com.example.examplemod.blocks.FasphaltBlock;
+import com.example.examplemod.blocks.FasphaltBlockDirectional;
 import com.example.examplemod.blocks.HydraBlock;
 import com.example.examplemod.init.ModBlocks;
 
@@ -27,7 +28,9 @@ public class RegistrationHandler {
             new ItemBlock(ModBlocks.FASPHALT_BLOCK)
                 .setRegistryName(ModBlocks.FASPHALT_BLOCK.getRegistryName()),
             new ItemBlock(ModBlocks.MOBSAND_BLOCK)
-                .setRegistryName(ModBlocks.MOBSAND_BLOCK.getRegistryName())
+                .setRegistryName(ModBlocks.MOBSAND_BLOCK.getRegistryName()),
+            new ItemBlock(ModBlocks.FASPHALT_BLOCK_DIRECTIONAL)
+                .setRegistryName(ModBlocks.FASPHALT_BLOCK_DIRECTIONAL.getRegistryName())    
         };
 
         event.getRegistry().registerAll(items);
@@ -39,7 +42,8 @@ public class RegistrationHandler {
         final Block[] blocks = {
             setBlockName("first_block", new HydraBlock()),
             setBlockName("fasphalt_block", new FasphaltBlock(1.4, 1)),
-            setBlockName("mobsand_block", new FasphaltBlock(1, 0.03))
+            setBlockName("mobsand_block", new FasphaltBlock(1, 0.03)),
+            setBlockName("fasphalt_block_directional", new FasphaltBlockDirectional(1.4, 1))
         };
 
         event.getRegistry().registerAll(blocks);

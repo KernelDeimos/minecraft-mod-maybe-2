@@ -21,6 +21,7 @@ public class ModelRegistrationHandler {
         registerModel(Item.getItemFromBlock(ModBlocks.FIRST_BLOCK), 0);
         registerModel(Item.getItemFromBlock(ModBlocks.FASPHALT_BLOCK), 0);
         registerModel(Item.getItemFromBlock(ModBlocks.MOBSAND_BLOCK), 0);
+        registerModel(Item.getItemFromBlock(ModBlocks.FASPHALT_BLOCK_DIRECTIONAL), 0);
     }
 
     private static void registerModel(Item item, int meta) {
